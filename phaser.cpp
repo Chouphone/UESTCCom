@@ -64,14 +64,20 @@ void Phaser::_SubProgram(const std::string &pname, const std::string &proc)
 	_nowprcname = proc;
 	_Defs(pname, proc);
 
-	if (_Match(Type::endc))_Next();
-	else err("';' expected!\n");
-
+	/*if (_Match(Type::endc))_Next();
+	else 
+	{
+		std::cout<<tit->str<<std::endl;
+		err("';' expected1!\n");
+	}*/
 	_Excs();
 
 	if (_Match(Type::End))_Next();
-	else err("'End' expected!\n");
-
+	else 
+        {
+               std::cout<<tit->str<<std::endl;
+               err("'End' expected!\n");
+        }
 	_nowprcname = upername;
 
 	--_nowlevel;
@@ -86,7 +92,7 @@ void Phaser::_Defs(const std::string &pname, const std::string &proc)
 		_Def(pname, proc);
 
 		if (_Match(Type::endc))_Next();
-		else err(("';' expected\n"));
+		else err(("';' expected2\n"));
 
 	} while (_Match(Type::Int));
 }
@@ -152,7 +158,7 @@ void Phaser::_ProcDef()
 	else err("')' expected\n");
 
 	if (_Match(Type::endc))_Next();
-	else err("';' expected\n");
+	else err("';' expected3\n");
 
 	int varbegin = varTable.size();
 	_SubProgram(paraname,procname);
@@ -174,10 +180,10 @@ void Phaser::_Excs()
 	do
 	{
 		_Exc();
-		if (_Match(Type::End)) { _Next(); break; }
+		if (_Match(Type::End)) {  break; }
 
 		if (_Match(Type::endc))_Next();
-		else err(("';' expected\n"));
+		else err(("';' expected4\n"));
 	} while (1);
 }
 

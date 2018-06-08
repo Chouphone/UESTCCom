@@ -187,6 +187,6 @@ void microsyntax::PrintAns()
 {
 	for (auto &p : Words)
 	{
-		std::cout << typetable[static_cast<int>(p.type)] << ", " << p.str << std::endl;
+		std::cout << typetable[static_cast<int>(p.type)] << ", " << p.str <<"    "<<p.line<< std::endl;
 	}
 }
