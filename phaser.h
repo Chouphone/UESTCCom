@@ -53,7 +53,36 @@ public:
 		_nowprcname = "program";
 	}
 	void err(const std::string &msg);//error report!
+	void PrintVar()
+	{
+		for(auto &p : varTable)
+		{
+			std::cout<<"-----------------------------\n";
+			std::cout<<"name:"<<p.name<<std::endl;
+			std::cout<<"proc:"<<p.proc<<std::endl;
+			std::cout<<"kind:"<<static_cast<int>(p.kind)<<std::endl;
+			std::cout<<"type:"<<"integer"<<std::endl;
+			std::cout<<"level:"<<p.vLevel<<std::endl;
+			std::cout<<"pos:"<<p.posInTable<<std::endl;
+			std::cout<<"-----------------------------\n\n";
 	
+		}
+	}
+	void PrintProc()
+	{
+		for(auto &p : procTable)
+		{
+			std::cout<<"-----------------------------\n";
+			std::cout<<"name:"<<p.name<<std::endl;
+			//std::cout<<"proc:"<<p.proc<<std::endl;
+			//std::cout<<"kind:"<<static_cast<int>(p.kind)<<std::endl;
+			std::cout<<"type:"<<"integer"<<std::endl;
+			std::cout<<"var begin pos:"<<p.varBegin<<std::endl;
+			std::cout<<"var end pos:"<<p.varEnd<<std::endl;
+			std::cout<<"-----------------------------\n\n";
+	
+		}	
+	}
 private:
 	std::vector<Var> varTable;
 	std::vector<Proc> procTable;
